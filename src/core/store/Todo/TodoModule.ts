@@ -33,6 +33,8 @@ const todoReducer: Reducer<TodoState, TodoAction> = (
           ? { ...todo, isDone: action.payload.isDone }
           : todo,
       );
+    case TodoActionType.Delete:
+      return state.filter((todo) => todo.key !== action.payload.key);
     default:
       return state;
   }

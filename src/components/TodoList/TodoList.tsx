@@ -17,6 +17,10 @@ const TodoList: FC<TodoListProps> = ({ list }) => {
     return dispatch(todoActions.updateTodo(key, true));
   };
 
+  const handleRemovePress = (key: number) => {
+    return dispatch(todoActions.deleteTodo(key));
+  };
+
   const dispatch = useDispatch();
 
   return (
@@ -26,7 +30,7 @@ const TodoList: FC<TodoListProps> = ({ list }) => {
           <Text style={isTaskDone(todo.isDone)}>{todo.title}</Text>
           {!todo.isDone && (
             <View style={styles.rowDirection}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => handleRemovePress(todo.key)}>
                 <Text style={styles.removeText}> ✗ </Text>
               </TouchableOpacity>
               <TouchableOpacity onPress={() => handleDonePress(todo.key)}>
