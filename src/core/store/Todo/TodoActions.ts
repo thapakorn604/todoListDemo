@@ -5,10 +5,10 @@ import {
   TodoActionType,
 } from './../../types';
 
-export function addTodo(title: string): TodoCreateAction {
+export function addTodo(key: number, title: string): TodoCreateAction {
   return {
     type: TodoActionType.Create,
-    payload: { title },
+    payload: { key, title },
   };
 }
 

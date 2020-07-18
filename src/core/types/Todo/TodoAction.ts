@@ -2,7 +2,7 @@ import TodoActionType from './TodoActionType';
 
 export interface TodoCreateAction {
   type: TodoActionType.Create;
-  payload: { title: string };
+  payload: { key: number; title: string };
 }
 
 export interface TodoUpdateAction {

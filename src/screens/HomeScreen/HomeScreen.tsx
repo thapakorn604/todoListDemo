@@ -9,7 +9,8 @@ interface HomeScreenProps {}
 
 const HomeScreen: FC<HomeScreenProps> = () => {
   const handleAddTaskPress = (task: string) => {
-    return dispatch(todoActions.addTodo(task));
+    const key = Math.floor(9999 * Math.random());
+    return dispatch(todoActions.addTodo(key, task));
   };
 
   const [task, onTaskChange] = useState('');
@@ -18,15 +19,19 @@ const HomeScreen: FC<HomeScreenProps> = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>To-do List</Text>
-      <TodoList list={todoList} />
-      <Text style={styles.header}>Add a task</Text>
-      <TextInput
-        value={task}
-        onChangeText={(newTask) => onTaskChange(newTask)}
-        style={styles.textInput}
-      />
-      <Button title="ADD" onPress={() => handleAddTaskPress(task)} />
+      <View>
+        <Text style={styles.header}>To-do List</Text>
+        <TodoList list={todoList} />
+      </View>
+      <View>
+        <Text style={styles.header}>Add a task</Text>
+        <TextInput
+          value={task}
+          onChangeText={(newTask) => onTaskChange(newTask)}
+          style={styles.textInput}
+        />
+        <Button title="ADD" onPress={() => handleAddTaskPress(task)} />
+      </View>
     </View>
   );
 };

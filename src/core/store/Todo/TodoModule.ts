@@ -22,7 +22,7 @@ const todoReducer: Reducer<TodoState, TodoAction> = (
       return [
         ...state,
         {
-          key: Math.floor(9999 * Math.random()),
+          key: action.payload.key,
           title: action.payload.title,
           isDone: false,
         },
