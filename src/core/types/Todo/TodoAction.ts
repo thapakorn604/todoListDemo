@@ -1,9 +1,18 @@
 import TodoActionType from './TodoActionType';
-import { Todo } from './TodoState';
 
 export interface TodoCreateAction {
   type: TodoActionType.Create;
-  payload: Todo;
+  payload: { title: string };
 }
 
-export type TodoAction = TodoCreateAction;
+export interface TodoUpdateAction {
+  type: TodoActionType.Update;
+  payload: { key: number; isDone: boolean };
+}
+
+export interface TodoDeleteAction {
+  type: TodoActionType.Delete;
+  payload: { key: number };
+}
+
+export type TodoAction = TodoCreateAction | TodoUpdateAction | TodoDeleteAction;

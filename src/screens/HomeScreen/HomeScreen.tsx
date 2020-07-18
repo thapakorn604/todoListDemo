@@ -13,7 +13,6 @@ const HomeScreen: FC<HomeScreenProps> = () => {
     <View style={styles.container}>
       <Text style={styles.header}>To-do List</Text>
       <TodoList list={todoList} />
-      {console.log(todoList)}
     </View>
   );
 };

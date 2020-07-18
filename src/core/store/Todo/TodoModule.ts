@@ -27,6 +27,12 @@ const todoReducer: Reducer<TodoState, TodoAction> = (
           isDone: false,
         },
       ];
+    case TodoActionType.Update:
+      return state.map((todo) =>
+        todo.key === action.payload.key
+          ? { ...todo, isDone: action.payload.isDone }
+          : todo,
+      );
     default:
       return state;
   }

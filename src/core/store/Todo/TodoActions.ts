@@ -1,4 +1,9 @@
-import { TodoCreateAction, TodoActionType } from './../../types';
+import {
+  TodoCreateAction,
+  TodoUpdateAction,
+  TodoDeleteAction,
+  TodoActionType,
+} from './../../types';
 
 export function addTodo(title: string): TodoCreateAction {
   return {
@@ -7,4 +12,18 @@ export function addTodo(title: string): TodoCreateAction {
   };
 }
 
-export default { addTodo };
+export function updateTodo(key: number, isDone: boolean): TodoUpdateAction {
+  return {
+    type: TodoActionType.Update,
+    payload: { key, isDone },
+  };
+}
+
+export function deleteTodo(key: number): TodoDeleteAction {
+  return {
+    type: TodoActionType.Delete,
+    payload: { key },
+  };
+}
+
+export default { addTodo, updateTodo, deleteTodo };
